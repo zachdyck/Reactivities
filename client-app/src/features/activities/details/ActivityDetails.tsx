@@ -7,9 +7,10 @@ import ActivityList from '../dashboard/ActivityList';
 interface Props {
     activity: Activity;
     cancelSelectActivity: () => void;
+    openForm: (id:string) => void;
 }
 
-export default function ActivityDetails({activity, cancelSelectActivity}: Props) {
+export default function ActivityDetails({activity, cancelSelectActivity, openForm}: Props) {
     return (
         <Card fluid>
             <Image src={`/assets/categoryImages/${activity.category}.jpg`} />
@@ -24,7 +25,7 @@ export default function ActivityDetails({activity, cancelSelectActivity}: Props)
             </Card.Content>
             <Card.Content extra>
                 <Button.Group widths='2'>
-                    <Button basic color='blue'>Edit</Button>
+                    <Button onClick={() => openForm(activity.id)} basic color='blue'>Edit</Button>
                     <Button onClick={cancelSelectActivity} basic color='grey'>Cancel</Button>
                 </Button.Group>
             </Card.Content>
